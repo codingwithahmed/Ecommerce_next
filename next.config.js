@@ -17,6 +17,7 @@ const nextConfig = {
       'localhost',
       '127.0.0.1',
       'i.pravatar.cc',
+      'yt3.ggpht.com'
     ],
   },
   ...(process.env.FRAMEWORK_PROVIDER === 'graphql' && {

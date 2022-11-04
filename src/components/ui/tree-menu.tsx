@@ -139,7 +139,7 @@ function TreeMenu({ items, className }: TreeMenuProps) {
   return (
     <ul className={cn('text-xs', className)}>
       {items?.map((item: any) => (
-        <TreeMenuItem key={`${item.name}${item.slug}`} item={item} />
+       item ? <TreeMenuItem key={`${item.name}${item.slug}`} item={item} /> : <></>
       ))}
     </ul>
   );

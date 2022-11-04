@@ -5,7 +5,6 @@ import GoogleProvider from 'next-auth/providers/google';
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
-
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers
   providers: [

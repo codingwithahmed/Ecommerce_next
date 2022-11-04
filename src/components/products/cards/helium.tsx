@@ -72,7 +72,55 @@ const Helium: React.FC<HeliumProps> = ({ product, className }) => {
         <p className="text-xs text-muted">{unit}</p>
         {/* End of product info */}
 
+        <div className="relative mt-7 flex min-h-6 items-center justify-between md:mt-8">
+          {product_type.toLowerCase() === 'variable' ? (
+            <>
+              <div>
+                <span className="text-sm font-semibold text-accent md:text-[15px]">
+                  {minPrice}
+                </span>
+                <span> - </span>
+                <span className="text-sm font-semibold text-accent md:text-[15px]">
+                  {maxPrice}
+                </span>
+              </div>
 
+              {Number(quantity) > 0 && (
+                <button
+                  onClick={handleProductQuickView}
+                  className="order-5 flex items-center justify-center rounded-full border-2 border-border-100 bg-light py-2 px-3 text-sm font-semibold text-accent transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-light focus:border-accent focus:bg-accent focus:text-light focus:outline-none sm:order-4 sm:justify-start sm:px-4"
+                >
+                  <CartIcon className="h-4 w-4 ltr:mr-2 rtl:ml-2" />
+                  <span>{t('text-cart')}</span>
+                </button>
+              )}
+            </>
+          ) : (
+            <>
+              <div className="relative">
+                {basePrice && (
+                  <del className="absolute -top-4 text-xs italic text-muted text-opacity-75 md:-top-5">
+                    {basePrice}
+                  </del>
+                )}
+                <span className="text-sm font-semibold text-accent md:text-base">
+                  {price}
+                </span>
+              </div>
+
+              {Number(quantity) > 0 && (
+                <AddToCart data={product} variant="single" />
+              )}
+            </>
+          )}
+
+          {Number(quantity) <= 0 && (
+            <div className="rounded bg-red-500 px-2 py-1 text-xs text-light">
+              {t('text-out-stock')}
+            </div>
+          )}
+          {/* End of product price */}
+        </div>
       </header>
     </article>
   );
